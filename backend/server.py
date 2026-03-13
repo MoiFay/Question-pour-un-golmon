@@ -351,9 +351,12 @@ async def start_game(sid, data):
     room["questions"] = questions
 
     await sio.emit("game_starting", {"totalPlayers": len(alive)}, room=code)
-    await asyncio.sleep(2)
-    await send_next_question(code, 0)
     print(f"[GAME START] {code} with {len(alive)} players")
+    # Small delay then start — done as a task to not block the event loop
+    async def _delayed_start():
+        await asyncio.sleep(1)
+        await send_next_question(code, 0)
+    asyncio.create_task(_delayed_start())
 
 
 @sio.event

@@ -118,7 +118,11 @@ export function SocketProvider({ children }) {
       setAnswerLocked(false);
       setRoundResult(null);
       setTimerValue(20);
-      setGamePhase("question");
+      setGamePhase("question"); // force phase even if still "starting"
+    });
+
+    socket.on("connect_error", (err) => {
+      console.error("[Socket] connect error:", err.message);
     });
 
     socket.on("timer_tick", ({ remaining }) => {

@@ -37,36 +37,18 @@ export default function Game() {
     leaveRoom,
   } = useSocket();
 
-  const [showStarting, setShowStarting] = useState(false);
-
-  useEffect(() => {
-    if (gamePhase === "starting") {
-      setShowStarting(true);
-      const t = setTimeout(() => setShowStarting(false), 2500);
-      return () => clearTimeout(t);
-    }
-  }, [gamePhase]);
-
   const myStatus = room?.players?.[mySid]?.status;
   const isEliminated = myStatus === "eliminated";
   const isActualSpectator = isSpectator || myStatus === "spectator";
 
-  // ── Starting screen ──────────────────────────────────────────────────────
-  if (showStarting || gamePhase === "starting") {
+  // ── Waiting for question (starting or between rounds) ────────────────────
+  if (!question || gamePhase === "starting") {
     return (
       <div className="min-h-screen bg-golmon-bg flex flex-col items-center justify-center gap-6">
         <Logo size="lg" />
         <div className="text-4xl font-display font-black text-white animate-pulse-fast">
-          La partie commence…
+          {gamePhase === "starting" ? "La partie commence…" : "Chargement…"}
         </div>
-        <Spinner />
-      </div>
-    );
-  }
-
-  if (!question) {
-    return (
-      <div className="min-h-screen bg-golmon-bg flex items-center justify-center">
         <Spinner />
       </div>
     );
