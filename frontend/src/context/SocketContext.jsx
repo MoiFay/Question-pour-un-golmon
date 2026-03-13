@@ -10,8 +10,11 @@ import { io } from "socket.io-client";
 
 const SocketContext = createContext(null);
 
+// En production Railway, frontend et backend partagent le même domaine.
+// On se connecte à window.location.origin sauf si une URL explicite est définie.
 const BACKEND_URL =
-  process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
+  process.env.REACT_APP_BACKEND_URL ||
+  (typeof window !== "undefined" ? window.location.origin : "http://localhost:8000");
 
 export function SocketProvider({ children }) {
   const socketRef = useRef(null);
