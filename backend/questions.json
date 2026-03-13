@@ -50,7 +50,7 @@
   {
     "id": 9,
     "question": "Dans Dead by Daylight, quel tueur est connu sous le nom de 'Le Cénobite' et vient du film Hellraiser ?",
-    "answers": ["Pyramid Head", "Le Bourreau", "Pinhead", "La Sorcière"],
+    "answers": ["Pyramid Head", "Le Bourreau", "Pinhead", "La Nurse"],
     "correct": 2
   },
   {
@@ -170,7 +170,7 @@
   {
     "id": 29,
     "question": "Dans Dead by Daylight, quel tueur possède un pouvoir lié à une cassette VHS maudite ?",
-    "answers": ["La Sorcière", "Sadako (Onryō)", "La Hag", "Le Spectre"],
+    "answers": ["La Nurse", "Sadako (Onryō)", "La Hag", "Le Spectre"],
     "correct": 1
   },
   {
