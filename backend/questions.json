@@ -57,7 +57,7 @@
     "id": 10,
     "question": "Dans Dead by Daylight, quel est le temps de base pour réparer un générateur seul ?",
     "answers": ["60 secondes", "80 secondes", "90 secondes", "100 secondes"],
-    "correct": 1
+    "correct": 2
   },
   {
     "id": 11,
